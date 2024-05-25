@@ -57,7 +57,6 @@ gpu_layers: int
 """
 
 MODEL_TYPE = 'mistral'
-# MODEL_TYPE = 'llama'
 LIB = 'avx2'
 
 MAX_NEW_TOKES = 5

@@ -1,5 +1,7 @@
-from Interactors.get_policy_documents_chunks_interactor import \
-    GetPolicyDocumentsChunksInteractor
+import os
+
+from Interactors.get_documents_chunks_interactor import \
+    GetdocumentDocumentsChunksInteractor
 from Interactors.store_vector_embeddings_interactor import \
     StoreVectorEmbeddingsInteractor
 from Interfaces.Presenter. \
@@ -13,7 +15,8 @@ class CreateAndStoreEmbeddingsPresenter(
     CreateAndStoreEmbeddingsPresenterInterface):
 
     def __init__(self):
-        self.directory_path = './../Persist_Directory/policy_cosine'
+        self.directory_path = os.path.abspath(
+            './../Persist_Directory/document_cosine')
         self.clean_directory(directory_path=self.directory_path)
 
     def clean_directory(self, directory_path: str):
@@ -37,18 +40,18 @@ class CreateAndStoreEmbeddingsPresenter(
     def create_and_store_embeddings_from_policies(self,
                                                   folder_path: str) -> str:
         """
-        Create and store embeddings from policy documents stored in the specified folder.
+        Create and store embeddings from documents stored in the specified folder.
 
         Args:
-            folder_path (str): The path to the folder containing policy documents.
+            folder_path (str): The path to the folder containing document documents.
 
         Returns:
             str: A message indicating the status of the embedding storage process.
         """
-        get_documents_chunks = GetPolicyDocumentsChunksInteractor()
+        get_documents_chunks = GetdocumentDocumentsChunksInteractor()
         store_vector_embeddings = StoreVectorEmbeddingsInteractor()
 
-        documents_chunks = get_documents_chunks.get_policy_documents_chunks(
+        documents_chunks = get_documents_chunks.get_document_documents_chunks(
             folder_path=folder_path
         )
 
@@ -56,6 +59,6 @@ class CreateAndStoreEmbeddingsPresenter(
             chunked_documents=documents_chunks
         )
 
-        print("Policy Embeddings stored")
+        print("document Embeddings stored")
 
         return store_embeddings

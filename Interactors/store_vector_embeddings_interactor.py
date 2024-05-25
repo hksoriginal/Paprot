@@ -1,5 +1,5 @@
+import os
 from typing import List, Any
-import shutil
 from langchain_community.vectorstores.chroma import Chroma
 
 from Interactors.get_embedding_using_huggingface import \
@@ -29,7 +29,8 @@ class StoreVectorEmbeddingsInteractor(StoreVectorEmbeddingsInteractorInterface):
 
             embeddings = hugging_face_embeddings.get_embeddings_object()
 
-            persistent_directory = './../Persist_Directory/policy_cosine'
+            persistent_directory = \
+                os.path.abspath('./../Persist_Directory/document_cosine')
 
             vector_store = Chroma.from_documents(
                 documents=chunked_documents,

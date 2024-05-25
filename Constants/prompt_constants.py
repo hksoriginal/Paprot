@@ -32,31 +32,12 @@ Context:{}
 <|assistant|>
 """
 
-PROMPT_TEXTi = '''
-<|system|> Use the following pieces of policy to answer briefly question at the 
-end. Always be factually correct based on the policy and focus only on 
-relevant section of policy. Use the following references for acronyms -> (APL=Advanced Privilege Leave, OPH=Optional Paid Holiday, CL=Contingency Leave, PL=Privilege Leave, RIL -> Reliance Industries Limited)</s>
-<|user|> Policy : {context}
-Question: {question}</s>
-<|assistant|>
-'''
 PROMPT_TEXT = '''
-<|system|>You are an HR Query Resolver.You cannot change Policy at any 
-cost.Use the given Policy to answer the asked question precisely.Always be factually correct & concise.</s>
-<|user|> Policy : {context} Question: {question}</s>
+<|system|>You are an Document Query Resolver.You cannot change Document at any 
+cost.Use the given context to answer the asked question precisely.Always be 
+factually correct & concise.</s>
+<|user|> Context : {context} Question: {question}</s>
 <|assistant|>
 '''
 
 INPUT_VARIABLES = ['context', 'question']
-
-PROMPT_TEXT11 = '''
-[INST]<<SYS>> Use the following pieces of policy  to answer question at 
-the end.If you don't know the answer, just say that you don't know, don't try to make up an answer.Always be factually correct based on the policy and focus only on relevant section of policy.DO NOT EXPAND THE ACRONYMS!!!<</SYS>>
-Use the following references for acronyms -> (APL=Advanced Privilege Leave, 
-OPH=Optional Paid Holiday, CL=Contingency Leave, PL=Privilege Leave, RIL -> 
-Reliance Industries Limited)
-Policy Context : {context}
-Question: {question}
-Helpful Answer :
-[/INST]
-'''

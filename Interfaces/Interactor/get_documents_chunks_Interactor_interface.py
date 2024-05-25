@@ -3,7 +3,7 @@ from typing import List, Any
 from langchain.docstore.document import Document
 
 
-class GetPolicyDocumentsChunksInteractorInterface(ABC):
+class GetDocumentsChunksInteractorInterface(ABC):
     @abstractmethod
     def remove_special_characters(self, text: str) -> str:
         pass
@@ -31,5 +31,5 @@ class GetPolicyDocumentsChunksInteractorInterface(ABC):
         pass
 
     @abstractmethod
-    def get_policy_documents_chunks(self, folder_path: str) -> List[Any]:
+    def get_documents_chunks(self, folder_path: str) -> List[Any]:
         pass

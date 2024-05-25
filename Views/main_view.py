@@ -77,7 +77,7 @@ async def update_policy(req_body: Request):
             message = \
                 (create_and_store_embeddings.
                 create_and_store_embeddings_from_policies(
-                    folder_path='./../Policies'))
+                    folder_path='../Documents'))
             end = time.time()
             process_time = end - start
 

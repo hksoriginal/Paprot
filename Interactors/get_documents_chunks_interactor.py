@@ -6,16 +6,16 @@ import re
 from tqdm import tqdm
 from Constants.chunking_constants import CHUNK_SIZE, CHUNK_OVERLAP
 from Interfaces.Interactor. \
-    get_policy_documents_chunks_Interactor_interface import \
-    GetPolicyDocumentsChunksInteractorInterface
+    get_documents_chunks_Interactor_interface import \
+    GetDocumentsChunksInteractorInterface
 from langchain.docstore.document import Document
 from rich.console import Console
 
 console = Console()
 
 
-class GetPolicyDocumentsChunksInteractor(
-    GetPolicyDocumentsChunksInteractorInterface):
+class GetDocumentsChunksInteractor(
+    GetDocumentsChunksInteractorInterface):
 
     def remove_special_characters(self, text: str) -> str:
         """
@@ -62,7 +62,7 @@ class GetPolicyDocumentsChunksInteractor(
         with open(file_path, 'rb') as file:
             pdf_reader = PdfReader(file)
             for page_num in tqdm(range(len(pdf_reader.pages)),
-                                 desc=f"Processing Policy document :"
+                                 desc=f"Processing document :"
                                       f" {file_path}", colour='GREEN'):
                 page = pdf_reader.pages[page_num]
                 pdf_text += page.extract_text()
@@ -179,15 +179,15 @@ class GetPolicyDocumentsChunksInteractor(
         except Exception as e:
             print(f"Error while splitting documents into chunks: {e}")
 
-    def get_policy_documents_chunks(self, folder_path: str) -> List[Any]:
+    def get_documents_chunks(self, folder_path: str) -> List[Any]:
         """
-            Retrieves and processes policy documents and FAQ chunks from a specified folder.
+            Retrieves and processes documents.
 
             Args:
-                folder_path (str): The path to the folder containing policy documents (PDFs) and FAQs (separate files).
+                folder_path (str): The path to the folder containing  documents (PDFs) and FAQs (separate files).
 
             Returns:
-                List[Any]: A list containing chunked policy documents and FAQ chunks.
+                List[Any]: A list containing chunked documents and FAQ chunks.
 
             Raises:
                 Exception: If errors occur during file access, PDF processing, text chunking, or FAQ extraction.
@@ -199,4 +199,4 @@ class GetPolicyDocumentsChunksInteractor(
             chunked_documents.extend(faq_chunks)
             return chunked_documents
         except Exception as e:
-            print(f"Error while getting policy documents chunks: {e}")
+            print(f"Error while getting documents chunks: {e}")

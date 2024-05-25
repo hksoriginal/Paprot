@@ -1,3 +1,4 @@
+import os
 from typing import Tuple, Optional, List
 from Constants.prompt_constants import INPUT_VARIABLES, PROMPT_TEXT
 from Constants.retriever_constants import TOP_RESULTS, SEARCH_TYPE
@@ -52,12 +53,9 @@ class GetRAGOutputPresenter(GetRAGOutputPresenterInterface):
                 text=input_query)
 
         print("\t Loading LLM\t")
-        # local_llm = load_local_llm_interactor.load_llm_model(
-        #     local_llm_path='./../LocalLLM/zephyr-7b-beta.Q5_0.gguf')
         local_llm = load_local_llm_interactor.load_llm_model(
-            local_llm_path='./../LocalLLM/zephyr-7b-beta.Q5_K_S.gguf')
-        # local_llm = load_local_llm_interactor.load_llm_model(
-        #     local_llm_path='./../LocalLLM/llama-2-70b-chat.Q5_K_M.gguf')
+            local_llm_path=os.path.abspath(
+                './../LocalLLM/zephyr-7b-beta.Q5_K_S.gguf'))
 
         embeddings = huggingface_embeddings_interactor.get_embeddings_object()
         print("\t Getting Embedding Object\t")
@@ -65,7 +63,7 @@ class GetRAGOutputPresenter(GetRAGOutputPresenterInterface):
         print("\t Loading Chroma DB\t")
         chroma_vector_store = chroma_vector_store_interactor.load_vector_stores(
             embedding_function=embeddings,
-            file_path='./../Persist_Directory/policy_cosine'
+            file_path=os.path.abspath('./../Persist_Directory/document_cosine')
         )
 
         retriever = chroma_vector_store.as_retriever(
