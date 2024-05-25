@@ -1,0 +1,15 @@
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-lxws8o {
+  /* Add your custom styles here */
+  background-color: #005AAC; /* Set the background color to #005AAC */
+  color: #ffffff; /* Example text color */
+  padding: 10px; /* Example padding */
+  /* Add more styles as needed */
+}
+
+
+.MuiStack-root.css-12hxhao {
+  /* Set the new background image */
+  background-image: url('Chatbot_UI/public/logo.png');
+  /* Other styles as needed */
+}
+

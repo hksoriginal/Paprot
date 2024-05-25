@@ -1,0 +1,5 @@
+/LocalLLM/zephyr-7b-beta.Q5_K_S.gguf
+/Persist_Directory/policy_cosine/
+/Policies/work_hour_leave_policies/
+/Testing_Notebooks/
+/Databases/DB_files/hrb_user_feedback.db
